@@ -135,7 +135,7 @@ contract FundingDAO is IFundingDAO, ReentrancyGuard, AccessControl {
     {
         Proposal storage proposal = proposals[proposalId];
 
-        if(proposal.totalFundsRaised <= proposal.amount) revert InadequateFunds();
+        if(proposal.totalFundsRaised < proposal.amount) revert InadequateFunds();
 
         proposal.isPaid = true;
         proposal.isCompleted = true;
@@ -157,10 +157,11 @@ contract FundingDAO is IFundingDAO, ReentrancyGuard, AccessControl {
                 _setupRole(MEMBER, msg.sender);
                 members[msg.sender] += amount;
             }
+        emit NewMember(msg.sender, msg.value);
+
         } else {
             members[msg.sender] += amount;
             stakeholders[msg.sender] += amount;
         }
-        emit NewMember(msg.sender, msg.value);
     }
 }

@@ -44,4 +44,21 @@ describe("FundingDAO createStakeholder tests", () => {
       true
     );
   });
+
+  it("Should add amount to already existing stakeholder", async () => {
+    const { FundingDAOContract, Alice, VALID_STAKEHOLDER_AMOUNT } =
+      await loadFixture(deployFixture);
+
+    await expect(
+      FundingDAOContract.connect(Alice).createStakeholder({
+        value: VALID_STAKEHOLDER_AMOUNT,
+      })
+    ).not.be.reverted;
+
+    await expect(
+      FundingDAOContract.connect(Alice).createStakeholder({
+        value: VALID_STAKEHOLDER_AMOUNT,
+      })
+    ).not.be.reverted;
+  });
 });

@@ -20,7 +20,7 @@ describe("FundingDAO createProposal tests", () => {
     ).be.reverted;
   });
 
-  it("Should not allow a proposal that with an inadequate proposel deposit", async () => {
+  it("Should not allow a proposal with an inadequate proposal deposit", async () => {
     const { FundingDAOContract, Alice, VALID_STAKEHOLDER_AMOUNT } =
       await loadFixture(deployFixture);
 
