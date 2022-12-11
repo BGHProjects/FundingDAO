@@ -19,6 +19,10 @@ export interface IProposal {
   recipient: string;
   imageId: string;
   id: string;
+  votesAgainst?: string;
+  votesInFavour?: string;
+  proposer?: string;
+  livePeriod?: string;
 }
 
 interface IDataContext {
