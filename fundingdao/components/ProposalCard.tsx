@@ -41,46 +41,35 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
         border={`2px solid ${blueSecondary}`}
       >
         <HStack justifyContent="space-between">
-          <Text>Proposal - #{parseInt(proposal.id + 1)}</Text>
-          <Text as="span">
-            Funding Amount -{" "}
-            <Text as="span">{parseEther(proposal.amount)} MATIC</Text>
-          </Text>
+          <Text>Proposal - #{parseInt((proposal.id as string) + 1)}</Text>
+          <Text>Funding Amount - {parseEther(proposal.amount)} MATIC</Text>
         </HStack>
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" w="full">
           <Text>{proposal.title}</Text>
-          <Center
-            p="5px"
-            borderRadius="5px"
-            border={`2px solid ${blueSecondary}`}
-          >
+          <Center p="5px" borderRadius="5px" bg={blueSecondary}>
             <Text color="white">Voting Period</Text>
           </Center>
         </HStack>
         <Flex justifyContent="space-between">
           <Text>{proposal.description}</Text>
         </Flex>
-        <HStack>
-          <Text>
-            Proposer:{" "}
-            <Center borderRadius="5px" p="3px" bg="lightgrey">
-              <Text color={blueSecondary}>{proposal.proposer}</Text>
-            </Center>
-          </Text>
+        <HStack alignItems="center" justifyContent="flex-start" w="full">
+          <Text>Proposer:</Text>
+          <Center borderRadius="5px" p="3px" bg="lightgrey">
+            <Text color={blueSecondary}>{proposal.proposer}</Text>
+          </Center>
         </HStack>
-        <HStack>
-          <VStack>
+        <HStack w="full" justifyContent="space-between">
+          <VStack alignItems="flex-start">
             <Text>Time</Text>
-            {isCompleted ? (
-              <Text>Voting period is over</Text>
-            ) : (
-              <Text>
-                {days} days {hours}: {minutes}: {seconds}
-              </Text>
-            )}
+            <Text fontWeight="bold">
+              {isCompleted
+                ? "Voting period is over"
+                : `${days} "days" ${hours}: ${minutes}: ${seconds}`}
+            </Text>
           </VStack>
           {isCompleted ? (
-            <Text>
+            <Text fontWeight="bold">
               Proposal is{" "}
               {parseInt(proposal.votesInFavour as string) >
               parseInt(proposal.votesAgainst as string)

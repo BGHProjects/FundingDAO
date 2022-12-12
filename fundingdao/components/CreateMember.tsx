@@ -18,8 +18,8 @@ const CreateMember = () => {
       spacing={5}
     >
       <Text alignSelf="center">You are not a member</Text>
-      <Text>
-        Add 0.1 MATIC to become a member and more than 0.1 MATIC to become a
+      <Text textAlign="center">
+        Send 0.1 MATIC to become a member. Send more than 0.1 MATIC to become a
         stakeholder
       </Text>
       <Input
@@ -34,6 +34,7 @@ const CreateMember = () => {
         w="100%"
         bg={blueSecondary}
         onClick={() => createStakeholder(val)}
+        colorScheme="blue"
       >
         <Text color="white">Send</Text>
       </Button>

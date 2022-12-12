@@ -18,7 +18,7 @@ export interface IProposal {
   amount: string;
   recipient: string;
   imageId: string;
-  id: string;
+  id?: string;
   votesAgainst?: string;
   votesInFavour?: string;
   proposer?: string;
