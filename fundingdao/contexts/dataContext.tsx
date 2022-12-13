@@ -23,6 +23,8 @@ export interface IProposal {
   votesInFavour?: string;
   proposer?: string;
   livePeriod?: string;
+  totalFundsRaised?: number;
+  isPaid?: boolean;
 }
 
 interface IDataContext {

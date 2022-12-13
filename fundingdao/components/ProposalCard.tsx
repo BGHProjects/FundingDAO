@@ -2,10 +2,17 @@ import { DataContext, IProposal } from "../contexts/dataContext";
 import { useTimer } from "react-timer-hook";
 import { useContext } from "react";
 import { Center, VStack, HStack, Text, Flex } from "@chakra-ui/layout";
-import { blueSecondary } from "../consts/colours";
+import {
+  blueSecondary,
+  greenBG,
+  greenFG,
+  lightgreyBG,
+  redBG,
+  redFG,
+} from "../consts/colours";
 import { parseEther } from "../helpers";
 
-interface IProposalCard {
+export interface IProposalCard {
   proposal: IProposal;
   openModal: () => void;
 }
@@ -24,15 +31,15 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
   const isCompleted = proposalExpiryDate < new Date();
   console.log("isCompleted", isCompleted);
 
-  const handleCardClick = () => {
+  const handleCardClick = async () => {
     if (isStakeholder) {
-      console.log("isStakeholder");
+      await getProposal(proposal.id as string);
       openModal();
     }
   };
 
   return (
-    <Center onClick={() => handleCardClick()}>
+    <Center onClick={() => handleCardClick()} w="800px">
       <VStack
         borderRadius="10px"
         p="20px"
@@ -40,12 +47,16 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
         justifyContent="center"
         border={`2px solid ${blueSecondary}`}
       >
-        <HStack justifyContent="space-between">
-          <Text>Proposal - #{parseInt((proposal.id as string) + 1)}</Text>
-          <Text>Funding Amount - {parseEther(proposal.amount)} MATIC</Text>
+        <HStack justifyContent="space-between" w="full">
+          <Text fontWeight="bold" color="grey">
+            Proposal - #{parseInt((proposal.id as string) + 1)}
+          </Text>
+          <Text fontWeight="bold" color="grey">
+            Funding Amount - {parseEther(proposal.amount)} MATIC
+          </Text>
         </HStack>
         <HStack justifyContent="space-between" w="full">
-          <Text>{proposal.title}</Text>
+          <Text fontWeight="bold">{proposal.title}</Text>
           <Center p="5px" borderRadius="5px" bg={blueSecondary}>
             <Text color="white">Voting Period</Text>
           </Center>
@@ -55,7 +66,7 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
         </Flex>
         <HStack alignItems="center" justifyContent="flex-start" w="full">
           <Text>Proposer:</Text>
-          <Center borderRadius="5px" p="3px" bg="lightgrey">
+          <Center borderRadius="5px" p="3px" bg={lightgreyBG}>
             <Text color={blueSecondary}>{proposal.proposer}</Text>
           </Center>
         </HStack>
@@ -65,7 +76,7 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
             <Text fontWeight="bold">
               {isCompleted
                 ? "Voting period is over"
-                : `${days} "days" ${hours}: ${minutes}: ${seconds}`}
+                : `${days} days ${hours}:${minutes}:${seconds}`}
             </Text>
           </VStack>
           {isCompleted ? (
@@ -78,13 +89,17 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
             </Text>
           ) : (
             <HStack spacing={10}>
-              <VStack bg="lightGrey" borderRadius="10px">
-                <Text color="white">In Favour</Text>
-                <Text color="green">{proposal.votesInFavour}</Text>
+              <VStack bg={greenBG} borderRadius="10px" p="10px">
+                <Text color={greenFG}>In Favour</Text>
+                <Text color="black" fontWeight="bold">
+                  {proposal.votesInFavour}
+                </Text>
               </VStack>
-              <VStack bg="lightGrey" borderRadius="10px">
-                <Text color="white">Against</Text>
-                <Text color="red">{proposal.votesAgainst}</Text>
+              <VStack bg={redBG} borderRadius="10px" p="10px">
+                <Text color={redFG}>Against</Text>
+                <Text color="black" fontWeight="bold">
+                  {proposal.votesAgainst}
+                </Text>
               </VStack>
             </HStack>
           )}
