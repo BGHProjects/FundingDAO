@@ -7,16 +7,18 @@ import { DataContext } from "../contexts/dataContext";
 export default function Home() {
   const { allInvestedProposals, loading, account } = useContext(DataContext);
 
-  const test = {
-    title: "Proposed Proposal",
-    description:
-      "And here is the text that would outline what this proposal is all about. There would ideally be a fair amount of information here, so this would make the modal expand to be quite large.",
-    id: "1",
-    amount: "50",
-    proposer: "0x000f0as0df00asf0as0df",
-    votesAgainst: 10,
-    votesInFavour: 22,
-  };
+  // const test = {
+  //   title: "Proposed Proposal",
+  //   description:
+  //     "And here is the text that would outline what this proposal is all about. There would ideally be a fair amount of information here, so this would make the modal expand to be quite large.",
+  //   id: "1",
+  //   amount: "500000",
+  //   proposer: "0x000f0as0df00asf0as0df",
+  //   votesAgainst: 10,
+  //   votesInFavour: 22,
+  //   livePeriod: "5",
+  //   totalFundsRaised: "5000",
+  // };
 
   return (
     <Center>

@@ -23,7 +23,7 @@ export interface IProposal {
   votesInFavour?: string;
   proposer?: string;
   livePeriod?: string;
-  totalFundsRaised?: number;
+  totalFundsRaised?: string;
   isPaid?: boolean;
 }
 
