@@ -1,15 +1,15 @@
-import { DataContext, IProposal } from "../contexts/dataContext";
-import { useTimer } from "react-timer-hook";
+import { Center, Flex, HStack, Text, VStack } from "@chakra-ui/layout";
 import { useContext } from "react";
-import { Center, VStack, HStack, Text, Flex } from "@chakra-ui/layout";
+import { useTimer } from "react-timer-hook";
 import {
   blueSecondary,
+  gradBG,
   greenBG,
   greenFG,
-  lightgreyBG,
   redBG,
   redFG,
 } from "../consts/colours";
+import { DataContext, IProposal } from "../contexts/dataContext";
 import { parseEther } from "../helpers";
 
 export interface IProposalCard {
@@ -39,48 +39,52 @@ const ProposalCard = ({ proposal, openModal }: IProposalCard) => {
   };
 
   return (
-    <Center onClick={() => handleCardClick()} w="800px">
+    <Center onClick={() => handleCardClick()} w="800px" cursor="pointer">
       <VStack
         borderRadius="10px"
         p="20px"
         spacing={5}
         justifyContent="center"
-        border={`2px solid ${blueSecondary}`}
+        bgGradient={gradBG}
       >
         <HStack justifyContent="space-between" w="full">
-          <Text fontWeight="bold" color="grey">
-            Proposal - #{parseInt((proposal.id as string) + 1)}
+          <Text fontWeight="bold" color="lightgrey">
+            Proposal - #{parseInt(proposal.id as string)}
           </Text>
-          <Text fontWeight="bold" color="grey">
+          <Text fontWeight="bold" color="lightgrey">
             Funding Amount - {parseEther(proposal.amount)} MATIC
           </Text>
         </HStack>
         <HStack justifyContent="space-between" w="full">
-          <Text fontWeight="bold">{proposal.title}</Text>
-          <Center p="5px" borderRadius="5px" bg={blueSecondary}>
+          <Text fontWeight="bold" color="white" fontSize="20px">
+            {proposal.title}
+          </Text>
+          <Center p="5px 10px" borderRadius="5px" bg={blueSecondary}>
             <Text color="white">Voting Period</Text>
           </Center>
         </HStack>
         <Flex justifyContent="space-between">
-          <Text>{proposal.description}</Text>
+          <Text color="white">{proposal.description}</Text>
         </Flex>
         <HStack alignItems="center" justifyContent="flex-start" w="full">
-          <Text>Proposer:</Text>
-          <Center borderRadius="5px" p="3px" bg={lightgreyBG}>
-            <Text color={blueSecondary}>{proposal.proposer}</Text>
+          <Text color="white">Proposer:</Text>
+          <Center borderRadius="5px" p="5px 10px" bg={blueSecondary}>
+            <Text color="white" fontWeight="bold">
+              {proposal.proposer}
+            </Text>
           </Center>
         </HStack>
         <HStack w="full" justifyContent="space-between">
           <VStack alignItems="flex-start">
-            <Text>Time</Text>
-            <Text fontWeight="bold">
+            <Text color="white">Time</Text>
+            <Text fontWeight="bold" color="white">
               {isCompleted
                 ? "Voting period is over"
                 : `${days} days ${hours}:${minutes}:${seconds}`}
             </Text>
           </VStack>
           {isCompleted ? (
-            <Text fontWeight="bold">
+            <Text fontWeight="bold" color="white">
               Proposal is{" "}
               {parseInt(proposal.votesInFavour as string) >
               parseInt(proposal.votesAgainst as string)

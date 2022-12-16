@@ -32,8 +32,7 @@ contract FundingDAO is IFundingDAO, ReentrancyGuard, AccessControl {
         string calldata title,
         string calldata description,
         address receiverAddress,
-        uint256 amount,
-        string calldata imageId
+        uint256 amount
     ) public payable onlyMember {
         if(msg.value < 0.1 ether) revert InadequateProposalDeposit();
 
@@ -48,7 +47,6 @@ contract FundingDAO is IFundingDAO, ReentrancyGuard, AccessControl {
         proposal.livePeriod = block.timestamp + votingPeriod;
         proposal.isPaid = false;
         proposal.isCompleted = false;
-        proposal.imageId = imageId;
         proposalCount++;
 
         emit NewProposal(msg.sender, amount);

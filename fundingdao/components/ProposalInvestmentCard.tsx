@@ -1,11 +1,19 @@
-import { Center, chakra, VStack, Text, HStack, Button } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  chakra,
+  Flex,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import {
   blueSecondary,
+  gradBG,
   greenBG,
   greenFG,
-  lightgreyBG,
   redBG,
   redFG,
 } from "../consts/colours";
@@ -47,25 +55,36 @@ const ProposalInvestmentCard = ({ proposal, openModal }: IProposalCard) => {
 
   return (
     <>
-      <Center onClick={() => handleCardClick()} w="800px">
+      <Flex
+        onClick={() => handleCardClick()}
+        minW="800px"
+        bgGradient={gradBG}
+        borderRadius="10px"
+        mx="50px"
+        alignItems="flex-start"
+      >
         <ContentVStack spacing={5}>
-          <Text fontWeight="bold" color="grey" alignSelf="flex-start">
-            Proposal - #{parseInt((proposal.id as string) + 1)}
+          <Text fontWeight="bold" color="lightGrey" alignSelf="flex-start">
+            Proposal - #{parseInt(proposal.id as string)}
           </Text>
           <HStack justifyContent="space-between" w="full">
-            <Text fontWeight="bold">{proposal.title}</Text>
+            <Text fontWeight="bold" color="white" fontSize="20px">
+              {proposal.title}
+            </Text>
             <Center p="5px" borderRadius="5px" bg={blueSecondary}>
               <Text color="white">Voting Period</Text>
             </Center>
           </HStack>
-          <Text>{proposal.description}</Text>
+          <Text color="white">{proposal.description}</Text>
           <HStack alignItems="center" justifyContent="flex-start" w="full">
-            <Text>Proposer:</Text>
-            <Center borderRadius="5px" p="3px" bg={lightgreyBG}>
-              <Text color={blueSecondary}>{proposal.proposer}</Text>
+            <Text color="white">Proposer:</Text>
+            <Center borderRadius="5px" bg={blueSecondary} p="5px 10px">
+              <Text color="white" fontWeight="bold">
+                {proposal.proposer}
+              </Text>
             </Center>
           </HStack>
-          <Text fontWeight="bold">
+          <Text fontWeight="bold" color="white">
             {isCompleted && passed
               ? `Total Funding Received - ${proposal.totalFundsRaised} MATIC`
               : "REJECTED"}
@@ -120,7 +139,7 @@ const ProposalInvestmentCard = ({ proposal, openModal }: IProposalCard) => {
             </HStack>
           )}
         </ContentVStack>
-      </Center>
+      </Flex>
       <AddFundsModal
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
@@ -140,7 +159,6 @@ const ContentVStack = chakra(VStack, {
     borderRadius: "10px",
     p: "20px",
     justifyContent: "center",
-    border: `2px solid ${blueSecondary}`,
   },
 });
 

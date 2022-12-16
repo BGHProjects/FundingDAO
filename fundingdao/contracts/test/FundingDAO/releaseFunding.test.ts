@@ -31,7 +31,7 @@ describe("FundingDAO releaseFunding tests", () => {
         "description",
         Alice.address,
         2,
-        "imageId",
+
         { value: VALID_PROPOSAL_AMOUNT }
       )
     ).not.be.reverted;
@@ -70,7 +70,7 @@ describe("FundingDAO releaseFunding tests", () => {
         "description",
         Alice.address,
         2,
-        "imageId",
+
         { value: VALID_PROPOSAL_AMOUNT }
       )
     ).not.be.reverted;

@@ -1,11 +1,10 @@
-import { Flex, Center, Text, HStack } from "@chakra-ui/react";
+import { Center, Flex, HStack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import { buttonPurple, mainBG, navyMain } from "../consts/colours";
 import { DataContext } from "../contexts/dataContext";
-import { navyMain, blueSecondary } from "../consts/colours";
 import TabButton from "./TabButton";
-import { dataAttr } from "@chakra-ui/utils";
 
 const Navbar = () => {
   const { account, connect, isMember, isStakeholder } = useContext(DataContext);
@@ -50,12 +49,14 @@ const Navbar = () => {
               FundingDAO
             </Text>
           </Link>
-          <Center borderRadius="5px" bg={blueSecondary} ml="30px" p="10px">
-            {notPartOfDAO
-              ? "Not a Member"
-              : isStakeholder
-              ? "Stakeholder"
-              : "Member"}
+          <Center borderRadius="5px" bg={buttonPurple} ml="30px" p="10px">
+            <Text color="white">
+              {notPartOfDAO
+                ? "Not a Member"
+                : isStakeholder
+                ? "Stakeholder"
+                : "Member"}
+            </Text>
           </Center>
         </Center>
         {account ? (
@@ -78,7 +79,7 @@ const Navbar = () => {
           </Center>
         )}
       </Flex>
-      <Center as="nav" w="full" h="100px">
+      <Center as="nav" w="full" h="100px" bg={mainBG}>
         <HStack justifySelf="flex-end" spacing={5} mr="10px">
           {buttonData.map((data) => {
             const condOption: Record<string, boolean> = {

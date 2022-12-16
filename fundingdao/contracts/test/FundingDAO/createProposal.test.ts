@@ -14,7 +14,6 @@ describe("FundingDAO createProposal tests", () => {
         "description",
         Alice.address,
         1,
-        "imageId",
         { value: VALID_PROPOSAL_AMOUNT }
       )
     ).be.reverted;
@@ -36,7 +35,7 @@ describe("FundingDAO createProposal tests", () => {
         "description",
         Alice.address,
         1,
-        "imageId",
+
         { value: ethers.utils.parseEther("0.01") }
       )
     ).be.revertedWithCustomError(
@@ -65,7 +64,7 @@ describe("FundingDAO createProposal tests", () => {
         "description",
         Alice.address,
         1,
-        "imageId",
+
         { value: VALID_PROPOSAL_AMOUNT }
       )
     ).not.be.reverted;

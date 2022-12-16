@@ -12,7 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState, useContext } from "react";
-import { blueSecondary } from "../consts/colours";
+import { blueSecondary, gradBG } from "../consts/colours";
 import { DataContext } from "../contexts/dataContext";
 
 interface IAddFundsModal {
@@ -71,16 +71,20 @@ const AddFundsModal = ({
   return (
     <Modal isOpen={isOpen} onClose={closeModal} size="lg">
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Add Funds</ModalHeader>
+      <ModalContent bgGradient={gradBG}>
+        <ModalHeader>
+          <Text color="white">Add Funds</Text>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Text>How much would you like to invest in this project?</Text>
-          <Text mt="10px">
+          <Text color="white">
+            How much would you like to invest in this project?
+          </Text>
+          <Text mt="10px" color="white">
             Required Funding -{" "}
             {parseInt(fundingRequired) < 0 ? "-" : fundingRequired} MATIC
           </Text>
-          <Text>Funding Raised - {fundingRaised} MATIC</Text>
+          <Text color="white">Funding Raised - {fundingRaised} MATIC</Text>
           <Input
             type="number"
             w="full"
@@ -88,6 +92,7 @@ const AddFundsModal = ({
             onChange={(e) => setAmount(e.target.value)}
             mt="20px"
             placeholder="Amount in MATIC"
+            color="white"
           />
         </ModalBody>
         <ModalFooter>

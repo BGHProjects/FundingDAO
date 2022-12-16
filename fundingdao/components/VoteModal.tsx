@@ -1,22 +1,22 @@
 import {
+  Button,
+  Center,
+  HStack,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Text,
-  HStack,
-  Center,
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import {
   blueSecondary,
+  gradBG,
   greenBG,
   greenFG,
-  lightgreyBG,
   redBG,
   redFG,
 } from "../consts/colours";
@@ -39,16 +39,20 @@ const VoteModal = ({ isOpen, closeModal, proposal }: IVoteModal) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} size="2xl">
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{proposal?.title}</ModalHeader>
+      <ModalContent bgGradient={gradBG}>
+        <ModalHeader>
+          <Text color="white">{proposal?.title}</Text>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Text>{proposal?.description}</Text>
-          <Text mt="20px">Funding Amount - {proposal?.amount} MATIC</Text>
+          <Text color="white">{proposal?.description}</Text>
+          <Text mt="20px" color="white">
+            Funding Amount - {proposal?.amount} MATIC
+          </Text>
           <HStack mt="20px">
-            <Text>Proposer - </Text>
-            <Center borderRadius="5px" p="3px" bg={lightgreyBG}>
-              <Text color={blueSecondary}>{proposal?.proposer}</Text>
+            <Text color="white">Proposer - </Text>
+            <Center borderRadius="5px" p="5px 10px" bg={blueSecondary}>
+              <Text color="white">{proposal?.proposer}</Text>
             </Center>
           </HStack>
         </ModalBody>

@@ -1,14 +1,14 @@
 import {
-  Flex,
-  useToast,
-  Text,
+  Button,
   chakra,
   Input,
-  Button,
+  Text,
   Textarea,
+  useToast,
+  VStack,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
-import { blueSecondary } from "../consts/colours";
+import { buttonPurple, gradBG } from "../consts/colours";
 import { DataContext } from "../contexts/dataContext";
 
 const CreateProposal = () => {
@@ -40,7 +40,6 @@ const CreateProposal = () => {
         description,
         amount,
         recipient,
-        imageId: "1",
       });
 
       setTitle("");
@@ -63,43 +62,48 @@ const CreateProposal = () => {
   const SPACING = "15px";
 
   return (
-    <Container>
-      <Text fontWeight="bold" fontSize="24px">
+    <Container bgGradient={gradBG} spacing={10}>
+      <Text fontWeight="bold" fontSize="24px" color="white">
         Create Proposal
       </Text>
-      <Text alignSelf="flex-start" mt="10px">
-        You will need to lock 0.2 MATIC to create a proposal.
-      </Text>
-      <Text alignSelf="flex-start">
-        {" "}
-        If the proposal is accepted, your will be refunded the 0.2 MATIC, but if
-        the proposal is rejected, the 0.2 MATIC will go to the DAO treasury.
-      </Text>
+
+      <VStack>
+        <Text alignSelf="flex-start" mt="10px" color="white">
+          You will need to lock 0.2 MATIC to create a proposal.
+        </Text>
+        <Text alignSelf="flex-start" color="white">
+          {" "}
+          If the proposal is accepted, your will be refunded the 0.2 MATIC, but
+          if the proposal is rejected, the 0.2 MATIC will go to the DAO
+          treasury.
+        </Text>
+      </VStack>
+
       <Input
-        mt={SPACING}
         placeholder="Title"
         onChange={(e) => setTitle(e.target.value)}
+        bg="transparent"
       />
       <Textarea
-        mt={SPACING}
         placeholder="Describe your project here"
         onChange={(e) => setDescription(e.target.value)}
         h="200px"
+        bg="transparent"
       />
       <Input
         mt={SPACING}
         placeholder="Funding Receiver's Address"
         onChange={(e) => setRecipient(e.target.value)}
+        bg="transparent"
       />
       <Input
-        mt={SPACING}
         placeholder="Funding Amount"
         onChange={(e) => setAmount(e.target.value)}
+        bg="transparent"
       />
       <Button
-        mt={SPACING}
         onClick={() => handleCreateProposal()}
-        bg={blueSecondary}
+        bg={buttonPurple}
         colorScheme="blue"
       >
         <Text color="white">Create Proposal</Text>
@@ -108,14 +112,12 @@ const CreateProposal = () => {
   );
 };
 
-const Container = chakra(Flex, {
+const Container = chakra(VStack, {
   baseStyle: {
-    flexDirection: "column",
     h: "fit-content",
     w: "1000px",
     alignItems: "center",
-    p: "10px",
-    border: `2px solid ${blueSecondary}`,
+    p: "20px",
     borderRadius: "10px",
   },
 });

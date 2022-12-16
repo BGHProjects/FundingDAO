@@ -17,7 +17,6 @@ export interface IProposal {
   description: string;
   amount: string;
   recipient: string;
-  imageId: string;
   id?: string;
   votesAgainst?: string;
   votesInFavour?: string;
@@ -48,7 +47,6 @@ interface IDataContext {
     description,
     amount,
     recipient,
-    imageId,
   }: IProposal) => Promise<void>;
 }
 

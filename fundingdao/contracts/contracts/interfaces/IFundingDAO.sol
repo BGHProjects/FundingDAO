@@ -77,7 +77,6 @@ interface IFundingDAO {
     /// @param proposer The address that proposed this proposal
     /// @param totalFundsRaised Amount indicating how much funds were raised for this proposal
     /// @param funders A list of who funded this proposal
-    /// @param imageId The image associated with this proposal
     struct Proposal {
         uint256 id;
         uint256 amount;
@@ -92,7 +91,6 @@ interface IFundingDAO {
         address proposer;
         uint256 totalFundsRaised;
         Funding[] funders;
-        string imageId;
     }
 
     //////////////

@@ -1,16 +1,16 @@
 import {
+  Button,
   Center,
-  Text,
+  chakra,
   Input,
   InputGroup,
   InputRightElement,
-  Button,
+  Text,
   useToast,
-  chakra,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useContext, useState } from "react";
-import { blueSecondary } from "../consts/colours";
+import { gradBG } from "../consts/colours";
 import { DataContext } from "../contexts/dataContext";
 
 export default function Home() {
@@ -54,27 +54,37 @@ export default function Home() {
   };
 
   return (
-    <Center>
+    <Center flexDirection="column">
       <Head>
         <title>Funding DAO</title>
       </Head>
-      {loading && <Text fontWeight="bold">Loading...</Text>}
+      {loading && (
+        <Text fontWeight="bold" color="white">
+          Loading...
+        </Text>
+      )}
       {!account && (
-        <Text fontWeight="bold">Please connect Metamask Wallet</Text>
+        <Text fontWeight="bold" color="white">
+          Please connect Metamask Wallet
+        </Text>
       )}
       {!loading && account && (
-        <BalanceContainer border={`2px solid ${blueSecondary}`}>
-          <Text fontWeight="bold" fontSize="2xl">
-            Current Balance: {currentBal} MATIC
+        <BalanceContainer bgGradient={gradBG}>
+          <Text fontWeight="bold" fontSize="2xl" color="white">
+            Current Balance:
           </Text>
-          <InputGroup mt="10px" w="full">
+          <Text fontWeight="bold" fontSize="2xl" color="white">
+            {currentBal} MATIC
+          </Text>
+          <InputGroup mt="40px" w="full">
             <Input
               placeholder="Contribute more to the DAO"
               onChange={(e) => setVal(e.target.value)}
+              color="white"
             />
             <InputRightElement w="70px">
-              <Button bg={blueSecondary} onClick={() => handleContribute()}>
-                Send
+              <Button bg="orange" onClick={() => handleContribute()}>
+                <Text color="white">Send</Text>
               </Button>
             </InputRightElement>
           </InputGroup>
@@ -91,6 +101,5 @@ const BalanceContainer = chakra(Center, {
     h: "200px",
     p: "20px",
     flexDirection: "column",
-    jusitfyContent: "space-evenly",
   },
 });
