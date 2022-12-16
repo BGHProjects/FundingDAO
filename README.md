@@ -1,6 +1,6 @@
 <div align="center"><h1>FundingDAO</h1></div>
 
-- This project is a [DAO](https://ethereum.org/en/dao/), that allows users to become either Members or Stakeholders, and therefore make proposals which can be fundraised through the DAO, but sending Polygon Mumbai Matic to the contract
+- This project is a [DAO](https://ethereum.org/en/dao/), that allows users to become either Members or Stakeholders, and therefore make proposals which can be fundraised through the DAO, by sending Polygon Mumbai Matic to the contract
 - Adapted from [this tutorial](https://learn.figment.io/tutorials/funding-dao-polygon) by [Viral Sangani](https://github.com/viral-sangani)
 - Built using [NextJS](https://nextjs.org/), [Chakra UI](https://chakra-ui.com/), [Hardhat](https://hardhat.org/), and [Solidity 0.8.17](https://docs.soliditylang.org/)
 
@@ -15,25 +15,25 @@
 ## Screenshots
 
 ### Home Page
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/HomePage.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/HomePage.png" /></div>
 
 ### Create Proposal
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/CreateProposal.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/CreateProposal.png" /></div>
 
 ### Stakeholder Lounge
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/StakeholderLounge.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/StakeholderLounge.png" /></div>
 
 ### Investments
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/Invements.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/Invements.png" /></div>
 
 ### Add Funds Modal
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/AddFundsModal.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/AddFundsModal.png" /></div>
 
 ### All Proposals
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/AllProposals.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/AllProposals.png" /></div>
 
 ### Vote Modal
-<div align="center"><img src="./fundingdao/READMEContent/Images/Tests/VoteModal.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/VoteModal.png" /></div>
 
 
 
