@@ -24,7 +24,7 @@
 <div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/StakeholderLounge.png" /></div>
 
 ### Investments
-<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/Invements.png" /></div>
+<div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/Invesments.png" /></div>
 
 ### Add Funds Modal
 <div align="center"><img src="./fundingdao/READMEContent/Images/Screenshots/AddFundsModal.png" /></div>
